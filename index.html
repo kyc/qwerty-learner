@@ -60,10 +60,7 @@
 
     <script>
       // Dark mode init
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark')
       } else {
         document.documentElement.classList.remove('dark')
@@ -72,14 +69,15 @@
       // Service Worker Registration
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/service-worker.js')
+          navigator.serviceWorker
+            .register('/service-worker.js')
             .then((registration) => {
-              console.log('ServiceWorker registration successful');
+              console.log('ServiceWorker registration successful')
             })
             .catch((err) => {
-              console.log('ServiceWorker registration failed: ', err);
-            });
-        });
+              console.log('ServiceWorker registration failed: ', err)
+            })
+        })
       }
     </script>
   </head>

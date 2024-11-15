@@ -47,6 +47,21 @@ export const isChineseSymbol = (val: string): boolean =>
   )
 
 export const IsDesktop = () => {
+  const DESKTOP_CHECK_KEY = 'desktop_check_result'
+  const DESKTOP_CHECK_DATE_KEY = 'desktop_check_date'
+
+  // Check if we already have a cached result from today
+  const lastCheckDate = localStorage.getItem(DESKTOP_CHECK_DATE_KEY)
+  const today = new Date().toDateString()
+
+  if (lastCheckDate === today) {
+    const cachedResult = localStorage.getItem(DESKTOP_CHECK_KEY)
+    if (cachedResult !== null) {
+      return cachedResult === 'true'
+    }
+  }
+
+  // If no cache or cache is from a different day, perform the check
   const userAgentInfo = navigator.userAgent
   const Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod']
 
@@ -57,6 +72,11 @@ export const IsDesktop = () => {
       break
     }
   }
+
+  // Cache the result and date
+  localStorage.setItem(DESKTOP_CHECK_KEY, flag.toString())
+  localStorage.setItem(DESKTOP_CHECK_DATE_KEY, today)
+
   return flag
 }
 
