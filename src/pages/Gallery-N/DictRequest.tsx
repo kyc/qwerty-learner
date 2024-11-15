@@ -46,9 +46,9 @@ export default function DictRequest() {
           <br />
         </InfoPanel>
       )}
-      <button className="cursor-pointer pr-6 text-sm text-indigo-500" onClick={onOpenPanel}>
+      {/* <button className="cursor-pointer pr-6 text-sm text-indigo-500" onClick={onOpenPanel}>
         没有找到想要的词典？
-      </button>
+      </button> */}
     </>
   )
 }

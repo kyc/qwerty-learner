@@ -1,6 +1,6 @@
 {
-  "short_name": "Qwerty Learner",
-  "name": "Qwerty Learner",
+  "short_name": "Martin's Words",
+  "name": "Martin's Words - English Learning App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,16 +10,21 @@
     {
       "src": "android-chrome-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "android-chrome-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait",
+  "theme_color": "#818CF8",
+  "background_color": "#ffffff",
+  "description": "An English learning app for keyboard workers"
 }

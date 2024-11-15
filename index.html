@@ -54,17 +54,32 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#818CF8" />
-    <link rel="source" href="https://github.com/Kaiyiwing/qwerty-learner" />
-    <link rel="source" href="https://qwerty.kaiyi.cool" />
+    <!-- <link rel="source" href="https://github.com/Kaiyiwing/qwerty-learner" />
+    <link rel="source" href="https://qwerty.kaiyi.cool" /> -->
     <link rel="manifest" href="/manifest.json" />
 
     <script>
       // Dark mode init
       if (
-        ('state' in localStorage && JSON.parse(localStorage.state).darkMode) ||
-        (!('state' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
       ) {
         document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch((err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
       }
     </script>
   </head>
